@@ -2,6 +2,14 @@
 
 Cool visualization of Zsh history.
 
+## Fast start
+
+zsh-history-termanalysis is started by running the following command in your terminal.
+
+```sh
+$ python -c "$(wget https://raw.githubusercontent.com/PIRXrav/zsh-history-termanalysis/master/analyze.py -O -)"
+```
+
 ## Demo
 
 ```
