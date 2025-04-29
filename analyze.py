@@ -3,7 +3,7 @@ from collections import Counter
 from time import gmtime
 import os
 import numpy as np
-import collections
+import math
 
 ZSH_HISTORY = "~/.zsh_history"
 
@@ -16,10 +16,10 @@ def concatx(*args):
 
 def termhist(a, title, xsize=10, ysize=10, xleg=None):
     values, _ = np.histogram(a, bins=xsize)
-    normv = 1 / np.max(values) * ysize
+    normv = 1 / np.max(values) * (ysize-1)
     mat = np.zeros((xsize, ysize))
     for i_v, v in enumerate(values):
-        for k in range(int((v * normv))):
+        for k in range(math.ceil((v * normv))):
             mat[i_v][k] = v
     d = 6
     hist = "-" * d + "+" + "-" * xsize + "+" + "\n"
@@ -74,7 +74,7 @@ if __name__ == "__main__":
     ts, cmds = analyse_zshrc()
 
     print("Frequencies:")
-    hnames = "012345678901012345678901"
+    hnames = "012345678901234567890123"
     dnames = "MTWTFSS"
     mnames = "JFMAMJJASOND"
     hists = concatx(
